@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صفحه برنامه - لـایـو سـکـسـی</title>
+  <style>
+    @font-face {
+      font-family: 'IRANSans';
+      src: url('https://cdn.jsdelivr.net/gh/rastikerdar/iransans/woff2/IRANSansWeb.woff2') format('woff2');
+    }
+    body {
+      font-family: 'IRANSans', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      color: #222;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    /* ==== انیمیشن‌ها ==== */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    @keyframes downloadProgress {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    /* ==== هدر بالا ==== */
+    header {
+      position: sticky;
+      top: 0;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      z-index: 10;
+      animation: slideInDown 0.6s ease-out;
+    }
+
+    header img {
+      height: 28px;
+      transition: transform 0.3s ease;
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      animation: scaleIn 0.5s ease-out;
+    }
+
+    .icon-btn:hover {
+      background-color: #f0f0f0;
+      transform: rotate(10deg);
+    }
+
+    .icon-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: #333;
+      transition: fill 0.3s ease;
+    }
+
+    .icon-btn:hover svg {
+      fill: #00a859;
+    }
+
+    /* ==== کارت اپ ==== */
+    .app-section {
+      max-width: 450px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+      margin: 15px auto;
+      padding: 18px;
+      animation: slideInUp 0.7s ease-out;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .app-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      animation: slideInUp 0.8s ease-out 0.1s both;
+    }
+
+    .app-logo {
+      width: 75px;
+      height: 75px;
+      border-radius: 14px;
+      border: 1px solid #eeeeee;
+      object-fit: cover;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: scaleIn 0.6s ease-out;
+    }
+
+    .app-logo:hover {
+      transform: scale(1.05) rotate(2deg);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .app-info h1 {
+      margin: 0 0 5px 0;
+      font-size: 20px;
+      color: #222;
+      transition: color 0.3s ease;
+    }
+
+    .app-info:hover h1 {
+      color: #00a859;
+    }
+
+    .developer-name {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 5px;
+      transition: color 0.3s ease;
+    }
+
+    .app-info:hover .developer-name {
+      color: #333;
+    }
+
+    .verified {
+      font-size: 12.5px;
+      color: #00a859;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out 1s forwards;
+    }
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin: 18px 0;
+      gap: 8px;
+      animation: slideInUp 0.8s ease-out 0.2s both;
+    }
+
+    .detail-item {
+      background: #f0f0f0;
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      color: #444;
+      transition: all 0.3s ease;
+      opacity: 1;
+      animation: scaleIn 0.5s ease-out forwards;
+    }
+
+    .detail-item:nth-child(1) { animation-delay: 0.3s; }
+    .detail-item:nth-child(2) { animation-delay: 0.4s; }
+    .detail-item:nth-child(3) { animation-delay: 0.5s; }
+    .detail-item:nth-child(4) { animation-delay: 0.6s; }
+
+    .detail-item:hover {
+      background: #e0e0e0;
+      transform: translateY(-2px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    /* دکمه‌ها */
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 20px 0;
+      animation: slideInUp 0.8s ease-out 0.3s both;
+    }
+
+    .install-btn {
+      width: 100%;
+      background-color: #00a859;
+      color: white;
+      border: none;
+      padding: 13px;
+      font-size: 15.5px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: pulse 2s infinite;
+    }
+
+    .install-btn:hover {
+      background-color: #008a4b;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 168, 89, 0.3);
+    }
+
+    .install-btn:active {
+      transform: translateY(0);
+    }
+
+    .install-btn.installing {
+      background-color: #007a3d;
+      animation: none;
+    }
+
+    .install-btn.downloading {
+      background-color: #007a3d;
+      animation: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .download-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background-color: #00ff88;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .install-btn.installing::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .antivirus-btn {
+      width: 100%;
+      background-color: transparent;
+      color: #0f78d0;
+      border: 1px solid #0f78d0;
+      padding: 11px;
+      font-size: 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .antivirus-btn:hover {
+      background-color: #f0f8ff;
+      transform: translateY(-2px);
+      box-shadow: 0 3px 10px rgba(15, 120, 208, 0.2);
+    }
+
+    /* ==== تغییرات ==== */
+    .update-section {
+      margin-top: 22px;
+      border-top: 1px solid #eaeaea;
+      padding-top: 15px;
+      animation: slideInUp 0.8s ease-out 0.4s both;
+    }
+
+    .update-section h3 {
+      font-size: 16px;
+      color: #222;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .update-section:hover h3 {
+      color: #00a859;
+    }
+
+    .update-section ul {
+      list-style-type: disc;
+      padding-right: 20px;
+      margin: 0;
+    }
+
+    .update-section li {
+      font-size: 13.5px;
+      color: #444;
+      margin-bottom: 7px;
+      line-height: 1.5;
+      transition: transform 0.3s ease;
+      padding-right: 5px;
+    }
+
+    .update-section li:hover {
+      transform: translateX(-5px);
+      color: #333;
+    }
+
+    .version {
+      font-size: 12px;
+      color: #777;
+      margin-top: 8px;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-out 1.2s forwards;
+    }
+
+    /* ==== گالری تصاویر ==== */
+    .screenshots {
+      margin-top: 25px;
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding-bottom: 5px;
+      scrollbar-width: thin;
+      animation: slideInUp 0.8s ease-out 0.5s both;
+    }
+
+    .screenshots img {
+      width: 175px;
+      height: 370px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+      border: 1px solid #eee;
+      transition: all 0.4s ease;
+    }
+
+    .screenshots img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    /* ==== بخش نظرات ==== */
+    .reviews {
+      margin-top: 28px;
+      animation: slideInUp 0.8s ease-out 0.6s both;
+    }
+
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .reviews-header h3 {
+      margin: 0;
+      font-size: 18px;
+      color: #222;
+    }
+
+    .write-review-btn {
+      background-color: #f0f0f0;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: #444;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .write-review-btn:hover {
+      background-color: #00a859;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .review-item {
+      background-color: #f8f8f8;
+      border-radius: 10px;
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      border: 1px solid #eee;
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: scaleIn 0.5s ease-out forwards;
+    }
+
+    .review-item.show {
+      opacity: 1;
+    }
+
+    .review-item:nth-child(-n+15) {
+      animation-delay: calc(var(--i) * 0.1s);
+    }
+
+    .review-item:hover {
+      transform: translateX(-5px);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .review-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #00a859;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .user-info h4 {
+      margin: 0;
+      font-size: 13.5px;
+      color: #0f78d0;
+    }
+
+    .review-date {
+      font-size: 11.5px;
+      color: #888;
+    }
+
+    .review-rating {
+      color: #ffc107;
+      font-size: 12px;
+    }
+
+    .review-content {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.5;
+      margin: 5px 0 0;
+    }
+
+    .review-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+    }
+
+    .like-btn, .reply-btn {
+      background: none;
+      border: none;
+      color: #666;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.3s ease;
+    }
+
+    .like-btn:hover {
+      color: #00a859;
+    }
+
+    .reply-btn:hover {
+      color: #0f78d0;
+    }
+
+    .like-count {
+      margin-right: 5px;
+    }
+
+    .show-more-btn {
+      width: 100%;
+      background-color: transparent;
+      color: #00a859;
+      border: 1px solid #00a859;
+      padding: 12px;
+      font-size: 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .show-more-btn:hover {
+      background-color: #f0f9f5;
+      transform: translateY(-2px);
+    }
+
+    .show-more-btn.hidden {
+      display: none;
+    }
+
+    /* ==== فوتر ==== */
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 11.5px;
+      margin: 25px 15px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+      animation: fadeIn 0.8s ease-out 1s both;
+    }
+
+    /* ==== مدال نصب موفق ==== */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      z-index: 1000;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .modal.show {
+      display: block;
+    }
+
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 300px;
+      width: 90%;
+      animation: scaleIn 0.4s ease-out forwards;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .modal-icon {
+      font-size: 50px;
+      color: #00a859;
+      margin-bottom: 20px;
+      animation: pulse 1s ease-out 0.5s 3;
+    }
+
+    .modal-close {
+      background-color: #00a859;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .modal-close:hover {
+      background-color: #008a4b;
+      transform: scale(1.05);
+    }
+
+    /* نوار پیشرفت دانلود */
+    .progress-container {
+      width: 100%;
+      height: 4px;
+      background-color: #e0e0e0;
+      border-radius: 2px;
+      margin-top: 10px;
+      overflow: hidden;
+      display: none;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background-color: #00a859;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    @media (max-width: 500px) {
+      .app-section { 
+        margin: 10px; 
+        padding: 15px; 
+        animation: slideInUp 0.6s ease-out;
+      }
+      .header-icons { gap: 15px; }
+      .icon-btn svg { width: 20px; height: 20px; }
+      .screenshots img {
+        width: 140px;
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://via.placeholder.com/100x30/00a859/ffffff?text=بازار" alt="">
+  <div class="header-icons">
+    <button class="icon-btn" id="searchBtn" title="جستجو">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      </svg>
+    </button>
+    <button class="icon-btn" id="moreBtn" title="منو">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <circle cx="12" cy="6" r="2"/>
+        <circle cx="12" cy="12" r="2"/>
+        <circle cx="12" cy="18" r="2"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="app-section">
+  <div class="app-header">
+    <img src="sexi.png" alt="لوگوی سـکـسـی" class="app-logo">
+    <div class="app-info">
+      <h1> لـایـو سـکـسـی  </h1>
+      <p class="developer-name">live sexi</p>
+      <div class="verified">✅ برنامه‌ی رسمی و معتبر</div>
+    </div>
+  </div>
+
+  <div class="details">
+    <div class="detail-item">+18 </div>
+    <div class="detail-item">۴۱ مگابایت</div>
+    <div class="detail-item">⭐ ۲.۶ از ۱۵۵۶ رأی</div>
+    <div class="detail-item">۴.۶ میلیون نصب</div>
+  </div>
+
+  <div class="buttons-container">
+    <button class="install-btn" id="installBtn">
+      <span class="btn-text">نصب</span>
+      <div class="download-progress" id="downloadProgress"></div>
+    </button>
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <button class="antivirus-btn" id="antivirusBtn">مشاهده‌ی نتایج بررسی آنتی‌ویروس</button>
+  </div>
+
+  <div class="update-section">
+    <h3>تغییرات اخیر</h3>
+    <ul>
+      <li>اضافه شدن 1 میلیون کاربر جدید🟢</li>
+      <li>رفع تمام باگ های گزارش شده⚡</li>
+      <li>بهینه‌سازی و بهبودهای ظاهری✍️</li>
+      <li>رفع ایراد</li>
+    </ul>
+    
+    <p class="version">نسخه ۲.۱۸.۳۷ | بروزرسانی در ۳۱ خرداد ۱۴۰۵</p>
+  </div>
+
+  <!-- بخش نظرات جدید -->
+  <div class="reviews">
+    <div class="reviews-header">
+      <h3>نظرات کاربران (۳۰ نظر)</h3>
+      <button class="write-review-btn">نوشتن نظر</button>
+    </div>
+
+    <div id="reviewsContainer">
+      <!-- نظرات به صورت داینامیک با جاوااسکریپت اضافه می‌شوند -->
+    </div>
+
+    <button class="show-more-btn" id="showMoreBtn">نمایش نظرات بیشتر</button>
+  </div>
+</div>
+
+<!-- مدال نصب موفق -->
+<div class="modal" id="successModal">
+  <div class="modal-content">
+    <div class="modal-icon">✅</div>
+    <h3>دانلود موفق!</h3>
+    <p>برنامه <strong>  لایو سکسی | Live sexi</strong> با موفقیت دانلود شد.</p>
+    <p>حجم فایل: <strong>۴۱ مگابایت</strong></p>
+    <p>فایل در پوشه Downloads ذخیره شد.</p>
+    <button class="modal-close" id="modalClose">متوجه شدم</button>
+  </div>
+</div>
+
+<footer>© کافه بازار</footer>
+
+<script>
+  // لیست 30 نظر مختلف
+  const reviews = [
+    { user: "فاطمه", comment: "فیلم هاش عالیه🫠", likes: 65, replies: 23 },
+    { user: "فاطمه", comment: "مرسی از برنامه خوبتون", likes: 42, replies: 12 },
+    { user: "علی", comment: "عالی بود", likes: 89, replies: 31 },
+    { user: "سارا", comment: " فیلم هاش کاملا رایگانه😁", likes: 120, replies: 45 },
+    { user: "رضا", comment: "برنامه‌ای فوق‌العاده!", likes: 76, replies: 19 },
+    { user: "مریم", comment: "کار کردن باهاش راحته", likes: 54, replies: 22 },
+    { user: "حسین", comment: "سرعت عالی داره", likes: 33, replies: 8 },
+    { user: "زهرا", comment: "بهترین برنامه فیلم", likes: 98, replies: 37 },
+    { user: "مهدی", comment: "واقعا حرفه‌ای", likes: 67, replies: 24 },
+    { user: "نرگس", comment: "کاربری آسون", likes: 45, replies: 15 },
+    { user: "امیر", comment: "امکانات کامل", likes: 82, replies: 29 },
+    { user: "پریسا", comment: "طراحی زیبا", likes: 71, replies: 26 },
+    { user: "کامیار", comment: "بدون مشکل", likes: 39, replies: 11 },
+    { user: "سمیرا", comment: "نصبش کردم عالیه", likes: 93, replies: 34 },
+    { user: "پویا", comment: "پشتیبانی خوب", likes: 58, replies: 20 },
+    { user: "لاله", comment: "" ,ikes: 110, replies: 42 },
+    { user: "حمید", comment: "ایول دمتون گرم", likes: 77, replies: 28 },
+    { user: "نازنین", comment: "بهتر از بقیه", likes: 63, replies: 23 },
+    { user: "سینا", comment: "کاربر پسند", likes: 49, replies: 17 },
+    { user: "مهسا", comment: "عالی عالی عالی", likes: 85, replies: 32 },
+    { user: "احمد", comment: "کیفیت بالا", likes: 72, replies: 25 },
+    { user: "ریحانه", comment: "لذت می‌برم", likes: 56, replies: 21 },
+    { user: "مهران", comment: "پیشنهاد می‌کنم", likes: 91, replies: 36 },
+    { user: "سحر", comment: "دست مریزاد", likes: 68, replies: 24 },
+    { user: "فرزاد", comment: "بدون نقص", likes: 44, replies: 16 },
+    { user: "هانیه", comment: "کاربردی", likes: 79, replies: 30 },
+    { user: "ایمان", comment: "نمره ۲۰", likes: 60, replies: 22 },
+    { user: "شیرین", comment: "عالی و بی‌نظیر", likes: 87, replies: 33 },
+    { user: "بهمن", comment: "از صفر تا صد عالی", likes: 52, replies: 18 },
+    { user: "گوهر", comment: "تک‌تک امکاناتش کامل", likes: 95, replies: 38 }
+  ];
+
+  // تاریخ‌های تصادفی برای هر نظر
+  function getRandomDate() {
+    const dates = [
+      "۱۴۰۴/۰۸/۲۰ • نصب نسخه جدید",
+      "۱۴۰۴/۰۸/۱۹ • استفاده نسخه قدیمی",
+      "۱۴۰۴/۰۸/۱۸ • اولین نصب",
+      "۱۴۰۴/۰۸/۱۷ • بروزرسانی",
+      "۱۴۰۴/۰۸/۱۶ • استفاده طولانی",
+      "۱۴۰۴/۰۸/۱۵ • تست برنامه",
+      "۱۴۰۴/۰۸/۱۴ • استفاده مداوم",
+      "۱۴۰۴/۰۸/۱۳ • ارتقاء حساب",
+    ];
+    return dates[Math.floor(Math.random() * dates.length)];
+  }
+
+  // تابع تولید آواتار رنگی بر اساس حرف اول
+  function getAvatarColor(name) {
+    const colors = ["#00a859", "#0f78d0", "#ff6b6b", "#ffa726", "#66bb6a", "#5c6bc0", "#ab47bc"];
+    return colors[name.charCodeAt(0) % colors.length];
+  }
+
+  // تابع ایجاد یک نظر
+  function createReviewElement(review, index) {
+    const reviewElement = document.createElement('div');
+    reviewElement.className = 'review-item';
+    reviewElement.style.setProperty('--i', index % 15);
+    
+    const randomRating = "★★★★★".slice(0, Math.floor(Math.random() * 3) + 3);
+    
+    reviewElement.innerHTML = `
+      <div class="review-header">
+        <div class="review-user">
+          <div class="user-avatar" style="background-color: ${getAvatarColor(review.user)}">
+            ${review.user.charAt(0)}
+          </div>
+          <div class="user-info">
+            <h4>${review.user}</h4>
+            <div class="review-date">${getRandomDate()}</div>
+          </div>
+        </div>
+        <div class="review-rating">${randomRating}</div>
+      </div>
+      <p class="review-content">${review.comment}</p>
+      <div class="review-actions">
+        <button class="like-btn">
+          <span class="like-count">${review.likes}</span>
+          پسندیدم
+        </button>
+        <button class="reply-btn">
+          <span class="like-count">${review.replies}</span>
+          ارسال پاسخ
+        </button>
+      </div>
+    `;
+    
+    return reviewElement;
+  }
+
+  // تابع نمایش نظرات
+  function displayReviews(startIndex = 0, count = 10) {
+    const container = document.getElementById('reviewsContainer');
+    
+    for (let i = startIndex; i < Math.min(startIndex + count, reviews.length); i++) {
+      const reviewElement = createReviewElement(reviews[i], i);
+      container.appendChild(reviewElement);
+    }
+  }
+
+  // بارگذاری اولیه 5 نظر
+  let visibleReviews = 5;
+  displayReviews(0, 5);
+
+  // دکمه نمایش بیشتر
+  const showMoreBtn = document.getElementById('showMoreBtn');
+  showMoreBtn.addEventListener('click', function() {
+    if (visibleReviews < reviews.length) {
+      const remaining = Math.min(5, reviews.length - visibleReviews);
+      displayReviews(visibleReviews, remaining);
+      visibleReviews += remaining;
+      
+      if (visibleReviews >= reviews.length) {
+        showMoreBtn.classList.add('hidden');
+      }
+    }
+  });
+
+  // دانلود فایل APK
+  function downloadAPK() {
+    const installBtn = document.getElementById("installBtn");
+    const downloadProgress = document.getElementById("downloadProgress");
+    const progressContainer = document.getElementById("progressContainer");
+    const progressBar = document.getElementById("progressBar");
+    const successModal = document.getElementById("successModal");
+    const btnText = installBtn.querySelector('.btn-text');
+    
+    // تغییر وضعیت دکمه
+    installBtn.classList.add("downloading");
+    btnText.textContent = "در حال دانلود...";
+    progressContainer.style.display = 'block';
+    
+    // شبیه‌سازی پیشرفت دانلود
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 5;
+      downloadProgress.style.width = progress + '%';
+      progressBar.style.width = progress + '%';
+      
+      if (progress >= 100) {
+        clearInterval(interval);
+        
+        // ایجاد لینک دانلود واقعی
+        const apkUrl = 'Live-Sexi.apk'; // اسم فایل APK
+        const downloadLink = document.createElement('a');
+        downloadLink.href = apkUrl;
+        downloadLink.download = 'Live-Sexi.apk';
+        document.body.appendChild(downloadLink);
+        
+        // دانلود فایل
+        setTimeout(() => {
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+          
+          // نمایش مدال موفقیت
+          setTimeout(() => {
+            successModal.classList.add("show");
+            
+            // بازنشانی دکمه
+            installBtn.classList.remove("downloading");
+            btnText.textContent = "نصب شده";
+            installBtn.style.backgroundColor = "#666";
+            installBtn.style.animation = "none";
+            installBtn.disabled = true;
+            progressContainer.style.display = 'none';
+          }, 500);
+        }, 500);
+      }
+    }, 100);
+  }
+
+  // دکمه نصب
+  const installBtn = document.getElementById("installBtn");
+  const successModal = document.getElementById("successModal");
+  const modalClose = document.getElementById("modalClose");
+  
+  installBtn.addEventListener("click", function() {
+    if (!installBtn.classList.contains('downloading')) {
+      downloadAPK();
+    }
+  });
+  
+  // بستن مدال
+  modalClose.addEventListener("click", function() {
+    successModal.classList.remove("show");
+  });
+  
+  // بستن مدال با کلیک خارج از آن
+  window.addEventListener("click", function(event) {
+    if (event.target === successModal) {
+      successModal.classList.remove("show");
+    }
+  });
+
+  // دکمه آنتی ویروس
+  document.getElementById("antivirusBtn").addEventListener("click", function() {
+    alert("نتایج بررسی آنتی‌ویروس در حال نمایش...");
+    window.open("https://bazaarche.com/antivirus-scan", "_blank");
+  });
+
+  // آیکون جستجو
+  document.getElementById("searchBtn").addEventListener("click", function() {
+    const searchInput = prompt("چه برنامه‌ای را جستجو می‌کنید؟", "برنامه Lilive sexi");
+    if (searchInput) {
+      alert(`در حال جستجوی "${searchInput}"...`);
+    }
+  });
+
+  // آیکون سه نقطه (منو)
+  document.getElementById("moreBtn").addEventListener("click", function() {
+    const menuItems = [
+      "صفحه اصلی",
+      "دسته‌بندی‌ها",
+      "برترین‌ها",
+      "پر دانلودترین‌ها",
+      "حساب کاربری",
+      "تنظیمات"
+    ];
+    
+    let menuText = "منو:\n";
+    menuItems.forEach((item, index) => {
+      menuText += `${index + 1}. ${item}\n`;
+    });
+    
+    const selected = prompt(menuText + "\nگزینه مورد نظر را انتخاب کنید (عدد):", "1");
+    
+    if (selected && selected >= 1 && selected <= menuItems.length) {
+      alert(`منتقل شدن به "${menuItems[selected-1]}"...`);
+    }
+  });
+
+  // دکمه نوشتن نظر
+  document.querySelector('.write-review-btn').addEventListener('click', function() {
+    const reviewText = prompt("نظر خود را درباره برنامه بنویسید:");
+    if (reviewText) {
+      alert("نظر شما با موفقیت ثبت شد و پس از تأیید نمایش داده می‌شود.");
+    }
+  });
+
+  // انیمیشن برای آیتم‌های دیتیل
+  const detailItems = document.querySelectorAll('.detail-item');
+  detailItems.forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      item.style.transform = 'translateY(-3px) scale(1.05)';
+    });
+    
+    item.addEventListener('mouseleave', () => {
+      item.style.transform = 'translateY(0) scale(1)';
+    });
+  });
+</script>
+
+</body>
+</html>
